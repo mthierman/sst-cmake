@@ -31,9 +31,24 @@
             }
         },
         {
+            "name": "build-unity",
+            "hidden": true,
+            "cacheVariables": {
+                "CMAKE_UNITY_BUILD": {
+                    "type": "BOOL",
+                    "value": "ON"
+                }
+            }
+        },
+        {
             "name": "debug",
             "inherits": ["generator", "build-debug"],
             "binaryDir": "${sourceDir}/build-debug"
+        },
+        {
+            "name": "debug-unity",
+            "inherits": ["generator", "build-debug", "build-unity"],
+            "binaryDir": "${sourceDir}/build-debug-unity"
         },
         {
             "name": "release",
@@ -41,26 +56,9 @@
             "binaryDir": "${sourceDir}/build-release"
         },
         {
-            "name": "unity-debug",
-            "inherits": ["generator", "build-debug"],
-            "binaryDir": "${sourceDir}/build-unity-debug",
-            "cacheVariables": {
-                "CMAKE_UNITY_BUILD": {
-                    "type": "BOOL",
-                    "value": "ON"
-                }
-            }
-        },
-        {
-            "name": "unity-release",
-            "inherits": ["generator", "build-release"],
-            "binaryDir": "${sourceDir}/build-unity-release",
-            "cacheVariables": {
-                "CMAKE_UNITY_BUILD": {
-                    "type": "BOOL",
-                    "value": "ON"
-                }
-            }
+            "name": "release-unity",
+            "inherits": ["generator", "build-release", "build-unity"],
+            "binaryDir": "${sourceDir}/build-release-unity"
         }
     ]
 }
