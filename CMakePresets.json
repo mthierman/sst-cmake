@@ -8,17 +8,53 @@
     },
     "configurePresets": [
         {
-            "name": "default",
-            "binaryDir": "${sourceDir}/build",
-            "generator": "Ninja Multi-Config",
+            "name": "generator",
+            "hidden": true,
+            "generator": "Ninja",
             "cacheVariables": {
                 "CMAKE_C_COMPILER": "clang",
                 "CMAKE_CXX_COMPILER": "clang++"
             }
         },
         {
-            "name": "unity",
-            "inherits": ["default"],
+            "name": "build-debug",
+            "hidden": true,
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Debug"
+            }
+        },
+        {
+            "name": "build-release",
+            "hidden": true,
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Release"
+            }
+        },
+        {
+            "name": "debug",
+            "inherits": ["generator", "build-debug"],
+            "binaryDir": "${sourceDir}/build-debug"
+        },
+        {
+            "name": "release",
+            "inherits": ["generator", "build-release"],
+            "binaryDir": "${sourceDir}/build-release"
+        },
+        {
+            "name": "unity-debug",
+            "inherits": ["generator", "build-debug"],
+            "binaryDir": "${sourceDir}/build-unity-debug",
+            "cacheVariables": {
+                "CMAKE_UNITY_BUILD": {
+                    "type": "BOOL",
+                    "value": "ON"
+                }
+            }
+        },
+        {
+            "name": "unity-release",
+            "inherits": ["generator", "build-release"],
+            "binaryDir": "${sourceDir}/build-unity-release",
             "cacheVariables": {
                 "CMAKE_UNITY_BUILD": {
                     "type": "BOOL",
@@ -30,23 +66,19 @@
     "buildPresets": [
         {
             "name": "debug",
-            "configuration": "Debug",
-            "configurePreset": "default"
+            "configurePreset": "debug"
         },
         {
             "name": "release",
-            "configuration": "Release",
-            "configurePreset": "default"
+            "configurePreset": "release"
         },
         {
             "name": "unity-debug",
-            "configuration": "Debug",
-            "configurePreset": "unity"
+            "configurePreset": "unity-debug"
         },
         {
             "name": "unity-release",
-            "configuration": "Release",
-            "configurePreset": "unity"
+            "configurePreset": "unity-release"
         }
     ]
 }
