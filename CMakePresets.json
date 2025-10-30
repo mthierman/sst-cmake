@@ -62,23 +62,5 @@
                 }
             }
         }
-    ],
-    "buildPresets": [
-        {
-            "name": "debug",
-            "configurePreset": "debug"
-        },
-        {
-            "name": "release",
-            "configurePreset": "release"
-        },
-        {
-            "name": "unity-debug",
-            "configurePreset": "unity-debug"
-        },
-        {
-            "name": "unity-release",
-            "configurePreset": "unity-release"
-        }
     ]
 }
