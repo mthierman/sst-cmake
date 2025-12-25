@@ -1,0 +1,64 @@
+{
+    "$schema": "https://raw.githubusercontent.com/Kitware/CMake/master/Help/manual/presets/schema.json",
+    "version": 10,
+    "cmakeMinimumRequired": {
+        "major": 3,
+        "minor": 31,
+        "patch": 0
+    },
+    "configurePresets": [
+        {
+            "name": "generator",
+            "hidden": true,
+            "generator": "Ninja",
+            "cacheVariables": {
+                "CMAKE_C_COMPILER": "clang",
+                "CMAKE_CXX_COMPILER": "clang++"
+            }
+        },
+        {
+            "name": "build-debug",
+            "hidden": true,
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Debug"
+            }
+        },
+        {
+            "name": "build-release",
+            "hidden": true,
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Release"
+            }
+        },
+        {
+            "name": "build-unity",
+            "hidden": true,
+            "cacheVariables": {
+                "CMAKE_UNITY_BUILD": {
+                    "type": "BOOL",
+                    "value": "ON"
+                }
+            }
+        },
+        {
+            "name": "debug",
+            "inherits": ["generator", "build-debug"],
+            "binaryDir": "${sourceDir}/build-debug"
+        },
+        {
+            "name": "debug-unity",
+            "inherits": ["generator", "build-debug", "build-unity"],
+            "binaryDir": "${sourceDir}/build-debug-unity"
+        },
+        {
+            "name": "release",
+            "inherits": ["generator", "build-release"],
+            "binaryDir": "${sourceDir}/build-release"
+        },
+        {
+            "name": "release-unity",
+            "inherits": ["generator", "build-release", "build-unity"],
+            "binaryDir": "${sourceDir}/build-release-unity"
+        }
+    ]
+}
