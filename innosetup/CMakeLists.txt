@@ -31,3 +31,7 @@ if(CMAKE_SYSTEM_NAME STREQUAL "Windows" AND NOT TARGET innosetup::compiler)
         )
     endif()
 endif()
+
+if(PROJECT_IS_TOP_LEVEL)
+    add_subdirectory(example)
+endif()
