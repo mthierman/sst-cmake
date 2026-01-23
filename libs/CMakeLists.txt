@@ -1,1 +1,1 @@
-add_subdirectory(miniz-3.1.0)
+add_subdirectory(miniz)
