@@ -2,3 +2,4 @@ cmake_minimum_required(VERSION 3.15)
 project(sst-cmake)
 
 add_subdirectory(innosetup)
+add_subdirectory(libs)
