@@ -1,0 +1,4 @@
+add_executable(sst_strnatcmp_example)
+target_compile_features(sst_strnatcmp_example PRIVATE cxx_std_20)
+target_sources(sst_strnatcmp_example PRIVATE "main.cpp")
+target_link_libraries(sst_strnatcmp_example PRIVATE sst::strnatcmp)

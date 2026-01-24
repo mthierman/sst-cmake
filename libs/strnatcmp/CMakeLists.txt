@@ -6,4 +6,8 @@ if(NOT TARGET sst_strnatcmp)
         PRIVATE "src/strnatcmp.c"
         PUBLIC FILE_SET HEADERS BASE_DIRS include
     )
+
+    if(PROJECT_IS_TOP_LEVEL)
+        add_subdirectory(examples)
+    endif()
 endif()
