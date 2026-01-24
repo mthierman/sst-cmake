@@ -1,0 +1,4 @@
+add_executable(sst_filesystem_example)
+target_compile_features(sst_filesystem_example PRIVATE cxx_std_20)
+target_sources(sst_filesystem_example PRIVATE "main.cpp")
+target_link_libraries(sst_filesystem_example PRIVATE sst::filesystem)
